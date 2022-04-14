@@ -16,83 +16,70 @@
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
-  <body>
+
+  <body class="bg-image"
+  style="background-image: url('images/heavens.jpg');
+  background-repeat: none;
+  min-height: 100vh;
+  background-position: center;
+  background-origin: center;"
+  >
+
+
+  <div class="header container-fluid d-flex justify-content-between bg-light px-3 py-3">
+    <div class="icone d-flex align-items-center">
+      <img src="/images/train.png" style="width: 32px">
+      <a class="text-decoration-none text-black" aria-current="page">Ticketac, pour la vie</a>
+    </div>
+  <div class="menu d-flex align-items-center">
+        <a class="nav-link active text-danger" aria-current="page" href="#">Connectes-toi !</a>
+        <a class="nav-link active text-dark" href="#">Tes derniers voyages</a>
+  </div>
+</div>
+
     <div class="home">
       <div class="row">
-        <div class="col-12 text-center get_started">
-          <h2>Get started with WeatherApp!</h2>
+        <div class="col-12 d-flex justify-content-center get_started mt-3">
+          <h2 class="bg-white round p-2">BOOK YOUR TICKETS TO HEAVEN</h2>
         </div>
 
-        <!-- SIGN UP AREA -->
-        <div class="col-12 col-sm-6 text-center">
-          <div class="formArea">
-            <h4 class="titleForm">Sign Up</h4>
+        <div class="w-100 row formArea d-flex justify-content-center text-center mt-3">
 
-            <form action="/sign-up" method="POST">
-              <div class="form-group">
-                <label for="exampleInputUsername">Username</label>
-                <input
-                  name="usernameFromFront"
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter username"
-                />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input
-                  name="emailFromFront"
-                  type="email"
-                  class="form-control"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                />
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  name="passwordFromFront"
-                  type="password"
-                  class="form-control"
-                  placeholder="Enter password"
-                />
-              </div>
+            <div class="d-flex justify-content-between col-6"><!--div signin et signup principale-->
 
-              <button type="submit" class="btn btn-info">Submit</button>
-            </form>
-          </div>
-        </div>
+            <!-- // SIGNUP// -->
 
-        <!-- SIGN IN AREA -->
-        <div class="col-12 col-sm-6 text-center">
-          <div class="formArea">
-            <h4 class="titleForm">Sign In</h4>
-
+            <div class="col-5 signin">
+              <h4 class="titleForm">Sign in</h4>
             <form action="/sign-in" method="POST">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
                 <input
-                  name="emailFromFront"
-                  type="email"
+                  name="nameFromFront"
+                  type="text"
                   class="form-control"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                />
+                  placeholder="Enter your name">
+                  <button type="submit" class="btn btn-info mt-3">Submit</button>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  name="passwordFromFront"
-                  type="password"
-                  class="form-control"
-                  placeholder="Enter password"
-                />
+            </form>
+            </div>
+
+            <!-- // SIGNIN // -->
+
+            <div class="col-5 signup">
+              <h4 class="titleForm">Sign up</h4>
+              <form action="/sign-up" method="POST">
+                <div class="form-group">
+                  <input
+                    name="nameFromFront"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your name">
+                    <button type="submit" class="btn btn-info mt-3">Submit</button>
+                </div>
+              </form>
               </div>
 
-              <button type="submit" class="btn btn-info">Submit</button>
-            </form>
-          </div>
-        </div>
+            </div>
       </div>
     </div>
 

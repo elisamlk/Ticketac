@@ -17,3 +17,10 @@ h3 {
   width: 300px;
   margin-top: 150px;
 }
+
+.bg-image {
+  background-repeat: none;
+  min-height: 100vh;
+  background-position: center;
+  background-origin: center;
+}
