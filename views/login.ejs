@@ -53,12 +53,11 @@
               <h4 class="titleForm">Sign in</h4>
             <form action="/sign-in" method="POST">
               <div class="form-group">
-                <input
-                  name="nameFromFront"
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter your name">
-                  <button type="submit" class="btn btn-info mt-3">Submit</button>
+                <label for="InputName">Ecris ton adresse e-mail</label>
+                <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris-le bordel">
+                <label for="InputName">Ecris ton mot de passe</label>
+                <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Mot de passe: Dieu">
+                <button type="submit" class="btn btn-info mt-3">Submit</button>
               </div>
             </form>
             </div>
@@ -69,12 +68,15 @@
               <h4 class="titleForm">Sign up</h4>
               <form action="/sign-up" method="POST">
                 <div class="form-group">
-                  <input
-                    name="nameFromFront"
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter your name">
-                    <button type="submit" class="btn btn-info mt-3">Submit</button>
+                  <label for="InputName">Ton nom</label>
+                  <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
+                  <label for="InputName">Ton prénom</label>
+                  <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
+                  <label for="InputName">Ta boiboite mail</label>
+                  <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris ton e-mail">
+                  <label for="InputName">Ton mot de passe pépère</label>
+                  <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Tu peux le faire">                                        
+                  <button type="submit" class="btn btn-info mt-3">Submit</button>
                 </div>
               </form>
               </div>
