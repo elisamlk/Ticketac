@@ -32,61 +32,70 @@ var date = [
 ];
 
 router.get("/", function (req, res, next) {
+  res.render("homepage");
+});
+
+router.get("/login", function (req, res, next) {
   res.render("login");
 });
 
-// POST signup page //
-router.post("/signup", async function (req, res, next) {
-  var searchUser = await signupModel.findOne({
-    email: req.body.emailFromFront,
-  });
+// POST signup page // 
+router.post('/signup', async function(req,res,next){
 
-  if (!searchUser) {
+  var searchUser = await signupModel.findOne({
+    email: req.body.emailFromFront
+  })
+  
+  if(!searchUser){
     var newUser = new signupModel({
       name: req.body.nameFromFront,
       firstname: req.body.firstnameFromFront,
       email: req.body.emailFromFront,
       password: req.body.passwordFromFront,
-    });
-
+    })
+  
     var newUserSave = await newUser.save();
-
+  
     req.session.user = {
       name: newUserSave.username,
       id: newUserSave._id,
-    };
-
-    console.log(req.session.user);
-
-    res.redirect("/homepage");
+    }
+  
+    console.log(req.session.user)
+  
+    res.redirect('/homepage')
   } else {
-    res.redirect("/");
+    res.redirect('/')
   }
+  
 });
 
 // POST signin page //
 
-router.post("/signin", async function (req, res, next) {
+router.post('/signin', async function(req,res,next){
+
   var searchUser = await signinModel.findOne({
     email: req.body.emailFromFront,
-    password: req.body.passwordFromFront,
-  });
+    password: req.body.passwordFromFront
+  })
 
-  if (searchUser != null) {
+  if(searchUser!= null){
     req.session.user = {
       name: searchUser.username,
-      id: searchUser._id,
-    };
-    res.redirect("/homepage");
+      id: searchUser._id
+    }
+    res.redirect('/homepage')
   } else {
-    res.render("login");
+    res.render('login')
   }
+
 });
 
-router.get("/logout", function (req, res, next) {
+router.get('/logout', function(req,res,next){
+
   req.session.user = null;
 
-  res.redirect("/");
+  res.redirect('/')
 });
 
 // Remplissage de la base de donnée, une fois suffit
