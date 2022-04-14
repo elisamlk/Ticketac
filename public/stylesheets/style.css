@@ -1,8 +1,19 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #00b7ff;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+h3 {
+  color: white;
+  margin-bottom: 40px;
+}
+
+.img-fluid {
+  width: 300px;
+  margin-top: 150px;
 }

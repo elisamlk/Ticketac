@@ -33,11 +33,17 @@ var date = [
 
 /* GET home page. */
 // TEST FRONTEND
-router.get("/", function (req, res, next) {
+/*router.get("/", function (req, res, next) {
   res.render("login");
+});
+*/
+
+router.get("/", function (req, res, next) {
+  res.render("homepage");
 });
 
 
+/*
 // POST signup page // 
 router.post('/signup', async function(req,res,next){
 
@@ -96,6 +102,7 @@ router.get('/logout', function(req,res,next){
 
   res.redirect('/')
 });
+*/
 
 // Remplissage de la base de donnée, une fois suffit
 router.get("/save", async function (req, res, next) {
