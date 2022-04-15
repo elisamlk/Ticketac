@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var userModel = require("../models/users");
 
 const mongoose = require("mongoose");
 
@@ -11,7 +12,7 @@ var journeySchema = mongoose.Schema({
   price: Number,
 });
 
-var journeyModel = mongoose.model("journey", journeySchema);
+var journeyModel = mongoose.model("trains", journeySchema);
 
 var city = [
   "Paris",
@@ -31,44 +32,92 @@ var date = [
   "2018-11-24",
 ];
 
-router.get("/", async function (req, res, next) {
-  await journeyModel.deleteMany()
+/*router.get("/", async function (req, res, next) {
+  await journeyModel.deleteMany();
   res.render("homepage");
 });
+*/
 
-router.get("/login", function (req, res, next) {
+router.get("/", function (req, res, next) {
   res.render("login");
 });
 
-router.get("/trains", function (req, res, next) {
+router.post("/sign-up", async function (req, res, next) {
+  var searchUser = await userModel.findOne({
+    email: req.body.emailFromFront,
+  });
+
+  if (!searchUser) {
+    var newUser = new userModel({
+      firstName: req.body.firstNameFromFront,
+      lastName: req.body.lastNameFromFront,
+      email: req.body.emailFromFront,
+      password: req.body.passwordFromFront,
+    });
+
+    var newUserSave = await newUser.save();
+    console.log(newUserSave);
+
+    req.session.user = {
+      lastName: newUserSave.lastName,
+      id: newUserSave._id,
+    };
+
+    res.redirect("/homepage");
+  } else {
+    res.redirect("login");
+  }
+});
+
+router.post("/sign-in", async function (req, res, next) {
+  var searchUser = await userModel.findOne({
+    email: req.body.emailFromFront,
+    password: req.body.passwordFromFront,
+  });
+
+  console.log(searchUser);
+
+  if (searchUser != null) {
+    req.session.user = {
+      lastName: searchUser.lastName,
+      id: searchUser._id,
+    };
+    res.redirect("/homepage");
+  } else {
+    res.render("login");
+  }
+});
+
+router.get("/trains", async function (req, res, next) {
+  var journeyList = await journeyModel.find();
+  console.log(journeyList);
   res.render("trains");
 });
 
-router.post('/trains', async function(req,res,next){
+/*
+router.post("/trains", async function (req, res, next) {
+  var trainsUser = await usersModel.find({ journeySchema });
 
-  var trainsUser = await usersModel.find({journeySchema})
-  
-  if(!trainsUser){
+  if (!trainsUser) {
     var newUser = new journeyModel({
       departure: req.body.departureFromFront,
       arrival: req.body.arrivalFromFront,
       date: req.body.dateFromFront,
       departureTime: req.body.timeFromFront,
       price: req.body.priceFromFront,
-    })
-  
+    });
+
     var newUserSave = await newUser.save();
-  
-    res.redirect('/trains')
+
+    res.redirect("/trains");
   } else {
-    res.redirect('/error')
+    res.redirect("/error");
   }
   res.redirect("/");
 });
 
-// POST signup page // 
-router.post('/signup', async function(req,res,next){
-
+// POST signup page //
+router.post("/signup", async function (req, res, next) {
   var searchUser = await signupModel.findOne({
     email: req.body.emailFromFront,
   });
@@ -120,8 +169,9 @@ router.get("/logout", function (req, res, next) {
 
   res.redirect("/");
 });
-/*
-// Remplissage de la base de donnée, une fois suffit
+*/
+
+// //Remplissage de la base de donnée, une fois suffit
 // router.get("/save", async function (req, res, next) {
 //   // How many journeys we want
 //   var count = 300;

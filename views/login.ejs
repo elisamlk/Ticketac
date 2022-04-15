@@ -47,35 +47,35 @@
 
             <div class="d-flex justify-content-between col-6"><!--div signin et signup principale-->
 
-            <!-- // SIGNUP// -->
+            <!-- // SIGNIN// -->
 
             <div class="col-5 signin">
               <h4 class="titleForm">Sign in</h4>
             <form action="/sign-in" method="POST">
               <div class="form-group">
-                <label for="InputName">Ecris ton adresse e-mail</label>
-                <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris-le bordel">
+                <label for="InputName"><%=userModel.email%></label>
+                <input name="emailFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris-le bordel">
                 <label for="InputName">Ecris ton mot de passe</label>
-                <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Mot de passe: Dieu">
+                <input name="passwordFromFront" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Mot de passe: Dieu">
                 <button type="submit" class="btn btn-info mt-3">Submit</button>
               </div>
             </form>
             </div>
 
-            <!-- // SIGNIN // -->
+            <!-- // SIGNUP // -->
 
             <div class="col-5 signup">
               <h4 class="titleForm">Sign up</h4>
               <form action="/sign-up" method="POST">
                 <div class="form-group">
                   <label for="InputName">Ton nom</label>
-                  <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
+                  <input name="lastNameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
                   <label for="InputName">Ton prénom</label>
-                  <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
+                  <input name="firstNameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Demande à ta mère">
                   <label for="InputName">Ta boiboite mail</label>
-                  <input name="nameFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris ton e-mail">
+                  <input name="emailFromFront" type="name" class="form-control" aria-describedby="emailHelp" placeholder="Ecris ton e-mail">
                   <label for="InputName">Ton mot de passe pépère</label>
-                  <input name="firstnameFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Tu peux le faire">                                        
+                  <input name="passwordFromFront" type="firstname" class="form-control" aria-describedby="emailHelp" placeholder="Tu peux le faire">                                        
                   <button type="submit" class="btn btn-info mt-3">Submit</button>
                 </div>
               </form>
