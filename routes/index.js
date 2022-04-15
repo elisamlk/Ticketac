@@ -3,6 +3,9 @@ var router = express.Router();
 
 const mongoose = require("mongoose");
 
+var journeyModel = require('../models/journeys')
+var usersModel = require('../models/users')
+
 var journeySchema = mongoose.Schema({
   departure: String,
   arrival: String,
@@ -32,7 +35,6 @@ var date = [
 ];
 
 router.get("/", async function (req, res, next) {
-  await journeyModel.deleteMany()
   res.render("homepage");
 });
 
@@ -40,31 +42,46 @@ router.get("/login", function (req, res, next) {
   res.render("login");
 });
 
-router.get("/trains", function (req, res, next) {
-  res.render("trains");
-});
-
-router.post('/trains', async function(req,res,next){
-
-  var trainsUser = await usersModel.find({journeySchema})
-  
-  if(!trainsUser){
-    var newUser = new journeyModel({
+router.post("/trains",  async function (req, res, next) {
+var journeyList = [];
+journeyList = await journeyModel.find(
+   
+    {
       departure: req.body.departureFromFront,
       arrival: req.body.arrivalFromFront,
       date: req.body.dateFromFront,
-      departureTime: req.body.timeFromFront,
-      price: req.body.priceFromFront,
-    })
-  
-    var newUserSave = await newUser.save();
-  
-    res.redirect('/trains')
-  } else {
-    res.redirect('/error')
-  }
-  res.redirect("/");
+    } )
+
+    if(journeyList){
+      res.render("trains", {journeyList});
+    }
+    else{
+      res.redirect("error")
+    }
 });
+
+// router.post('/homepage', async function(req,res,next){
+
+//   var data = await request(journeyList);
+//   var dataMongo = JSON.parse(data.body);
+//   console.log(dataMongo);
+  
+//   if(!dataMongo){
+//     var newJourney = new journeyModel({
+//       departure: req.body.departureFromFront,
+//       arrival: req.body.arrivalFromFront,
+//       date: req.body.dateFromFront,
+//       departureTime: req.body.timeFromFront,
+//       price: req.body.priceFromFront,
+//     })
+  
+//     var newJourneySave = await newJourney.save();
+  
+//     res.redirect('/trains')
+//   } else {
+//     res.redirect('/error')
+//   }
+// });
 
 // POST signup page // 
 router.post('/signup', async function(req,res,next){
@@ -120,6 +137,8 @@ router.get("/logout", function (req, res, next) {
 
   res.redirect("/");
 });
+
+/*
 /*
 // Remplissage de la base de donnée, une fois suffit
 // router.get("/save", async function (req, res, next) {
@@ -165,5 +184,5 @@ router.get("/logout", function (req, res, next) {
 
 //   res.render("index", { title: "Express" });
 // });
-
+*/
 module.exports = router;
