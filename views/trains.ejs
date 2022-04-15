@@ -11,7 +11,7 @@
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Document</title>
+    <title>Choisissez vos billets</title>
   </head>
   <body>
 
@@ -40,30 +40,23 @@
       </div>
     </div>
 
-    <div class="col-12 px-2 py-2">
+    <div class="resultats billets de trains col-12 px-2 py-2">
+
+       
 
         <h4>Les trajets disponibles le jour de Noël</h4>
 
-    <div class="ticket 1 col-8 d-flex get_started mt-3 justify-content-between align-items-center bg-white">
-      <h6>Départ / Arrivée</h6>
-      <p>Le train va pas tarder à partir</p>
-      <p>400€</p>
-      <button type="submit" class="btn btn-danger mt-3">OK</button>
-    </div>
+        <% for(let i=0; i<journeyList.length;i++){%>
 
-    <div class="ticket 2 col-8 d-flex get_started mt-3 justify-content-between align-items-center bg-white">
-      <h6>Départ / Arrivée</h6>
-      <p>Le train va pas tarder à partir</p>
-      <p>298€</p>
-      <button type="submit" class="btn btn-danger mt-3">OK</button>
-    </div>
+            <div class="ticket 2 col-8 d-flex get_started mt-3 justify-content-between align-items-center bg-white">
+              <h6><%=journeyList[i].departure%>
+                <%=journeyList[i].arrival%></h6>
+              <p>Votre train part dans 2 minutes 34 secondes</p>
+              <p><%=journeyList[i].price%>€</p>
+              <button type="submit" class="btn btn-danger mt-3">OK</button>
+            </div>
 
-    <div class="ticket 3 col-8 d-flex get_started mt-3 justify-content-between align-items-center bg-white">
-      <h6>Départ / Arrivée</h6>
-      <p>Le train va pas tarder à partir</p>
-      <p>350€</p>
-      <button type="submit" class="btn btn-danger mt-3">OK</button>
-    </div>
+        <%}%>
 
 </div>
   </body>

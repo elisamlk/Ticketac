@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Ticketac</title>
+    <title>Les portes du Paradis</title>
     <!-- To add in order to scale the view for mobiles -->
     <meta
       name="viewport"
@@ -16,6 +16,14 @@
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
+  <body class="bg-image"
+  style="background-image: url('images/heavens.jpg');
+  background-repeat: none;
+  min-height: 100vh;
+  background-position: center;
+  background-origin: center;
+  size-adjust: 100vh;"
+  >
   <body>
     <div
       class="header container-fluid d-flex justify-content-between bg-light px-3 py-3"
@@ -23,7 +31,7 @@
       <div class="icone d-flex align-items-center">
         <img src="/images/train.png" style="width: 32px" />
         <a class="text-decoration-none text-black" aria-current="page"
-          >Ticketac, pour la vie</a
+          >Ticketac, pour une autre vie</a
         >
       </div>
       <div class="menu d-flex align-items-center">
@@ -34,13 +42,14 @@
       </div>
     </div>
 
-    <h3>One-way ticket :</h3>
+    <h3 class="bg-dark round p-2">Aller-simple (pas de retour) :</h3>
     <div class="container">
-      <form action="/trains">
+      <form action="/trains" method="post">
         <div class="row">
           <div class="col">
             <div class="form-floating mb-3">
               <input
+                name="departureFromFront"
                 type="text"
                 class="form-control"
                 placeholder="From: Paris, Marseille..."
@@ -50,6 +59,7 @@
           <div class="col">
             <div class="form-floating">
               <input
+                name="arrivalFromFront"
                 type="text"
                 class="form-control"
                 placeholder="To: Lille, Nantes..."
@@ -57,10 +67,10 @@
             </div>
           </div>
           <div class="col">
-            <input type="date" class="form-control" />
+            <input name="dateFromFront" type="date" class="form-control" />
           </div>
           <div class="col">
-            <button type="button" class="btn btn-danger">Go</button>
+            <button type="submit" class="btn btn-danger">Go</button>
           </div>
         </div>
         <div class="row justify-content-center">
