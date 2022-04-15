@@ -2,23 +2,13 @@
 
 var mongoose = require('mongoose');
 
-var signinSchema = mongoose.Schema({
-    email: String,
-    password: String,
-})
-
-var signinModel = mongoose.model('users', signinSchema)
-
-var signupSchema = mongoose.Schema({
+var usersSchema = mongoose.Schema({
     name: String,
     firstname: String,
     email: String,
     password: String,
 })
 
-var signupModel = mongoose.model('users', signupSchema)
+var usersModel = mongoose.model('users', usersSchema)
 
 module.exports = usersModel;
-
-
-// comenntaiogek;jg peùvlr
